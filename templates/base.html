@@ -1,10 +1,40 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>Welcome to url shortner</title>
+    <link rel = "stylesheet" href ={% static "app/css/bootstrap.css"%}>
+    <body>
 
-</body>
-</html>
+        <h1>Welcome</h1>
+            <a href="{% url 'sign_up_view'%}">Create User</a>
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+
+
+
+
+
+
+
+        {% block content %}
+            no content
+        {% endblock %}
+
+
+
+
+
+</html></html>
