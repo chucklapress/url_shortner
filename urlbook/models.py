@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -14,4 +15,4 @@ class BookMark(models.Model):
     description = models.CharField(max_length=80)
     enterdate = models.DateTimeField(auto_now_add=True)
     uniqueid = models.CharField(max_length=20)
-    appuser = models.ForeignKey(Click)
+    appuser = models.ForeignKey(User)
