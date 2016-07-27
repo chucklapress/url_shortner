@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 
 # Create your views here
-from django.views.generic import View, TemplateView, CreateView
+from django.views.generic import View, ListView, CreateView, TemplateView
 from django.http import HttpResponse
-from urlbook.models import BookMark
+from urlbook.models import BookMark, Click
 
 
 class LoginView(View):
@@ -41,14 +41,10 @@ class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = "/"
 
-class NewTemplateView(TemplateView):
-    template_name = "new_template.html"
+class NewListView(ListView):
+    model = BookMark
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context[""] = ""
-        context["url"] = BookMark.objects.all()
-        return context
+    
 
 class SignUpView(CreateView):
     model = User

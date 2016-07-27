@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Book Marks</h1>
+<ul>
+{% for item in object_list %}
+    <li>{{ item.url }}</li>
+    <li>{{ item.title }}</li>
+    <li>{{ item.description }}</li>
+    <li>{{ item.enterdate }}</li>
+    <li>{{ item.uniqueid }}</li>
+    <li>{{ item.appuser }}</li>
+
+{% endfor %}
+</ul>
+
+
+
+
+
+{% endblock %}
