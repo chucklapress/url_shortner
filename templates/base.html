@@ -8,9 +8,18 @@
     <link rel = "stylesheet" href ={% static "app/css/bootstrap.css"%}>
     <body>
 
-        <h1>Welcome</h1>
-            <a href="{% url 'sign_up_view'%}">Create User</a>
+  <div class="container">
+        <a href="{% url 'index_view'%}">Home</a>
+        <a href= "{% url 'sign_up_view' %}">Sign up a new account</a>
+        <a href="{%url 'login'%}">Login to your account</a>
+        <a href="{%url 'logout_view'%}?next=/">Logout</a>
+        <a href="{%url 'new_template_view'%}?next=/">Starting Point</a>
 
+  </div>
+
+  {% block content %}
+
+  {% endblock %}
 
 
 
@@ -29,9 +38,6 @@
 
 
 
-        {% block content %}
-            no content
-        {% endblock %}
 
 
 
