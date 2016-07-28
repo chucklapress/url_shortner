@@ -44,9 +44,14 @@ class SignUpView(CreateView):
 class NewListView(ListView):
     model = BookMark
 
-    
+
 
 class SignUpView(CreateView):
     model = User
     form_class = UserCreationForm
+    success_url = '/'
+
+class CreateBookMarkView(CreateView):
+    model = BookMark
+    fields = ['url','title','description','uniqueid','appuser']
     success_url = '/'
