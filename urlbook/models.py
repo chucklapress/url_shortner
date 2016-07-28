@@ -14,7 +14,5 @@ class BookMark(models.Model):
         return self.url
 
 class Click(models.Model):
-    timestamp = models.DateTimeField
+    timestamp = models.DateTimeField(auto_now_add=True)
     url = models.ForeignKey(BookMark)
-    def __str__(self):
-        return self.url

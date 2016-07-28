@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import login, logout
-from urlbook.views import IndexView, NewListView, SignUpView, CreateBookMarkView
+from urlbook.views import IndexView, NewListView, SignUpView, CreateBookMarkView, ClickListView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,7 +27,9 @@ urlpatterns = [
     url(r'^logout/$', logout, name="logout_view"),
     url(r'^template/$', NewListView.as_view(), name="new_template_view"),
     url(r'^signup/$', SignUpView.as_view(), name="sign_up_view"),
-    url(r'^bookmark/$',CreateBookMarkView.as_view(),name="create_bookmark_view" )
+    url(r'^bookmark/$',CreateBookMarkView.as_view(), name="create_bookmark_view"),
+    url(r'^click/$', ClickListView.as_view(), name="click_list_view")
+
 
 
 ]

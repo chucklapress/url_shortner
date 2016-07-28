@@ -16,10 +16,19 @@ def hasher():
     #print(ints)
 
     hashids = Hashids(salt='user input is junk')
-    hashid = hashids.encode(random.randint(1, 10))
+    hashid = hashids.encode(random.randint(1, 100))
     print(hashid)
 
-    ints = hashids.decode('V6')
+    ints = hashids.decode('b7g')
     print(ints)
 
-hasher()
+
+import hashlib
+def Pyhasher():
+    mystring = input('Enter String to hash: ')
+    # Assumes the default UTF-8
+    hash_object = hashlib.md5(mystring.encode())
+    print(hash_object.hexdigest())
+    
+
+Pyhasher()

@@ -55,3 +55,6 @@ class CreateBookMarkView(CreateView):
     model = BookMark
     fields = ['url','title','description','uniqueid','appuser']
     success_url = '/'
+
+class ClickListView(ListView):
+    model = Click

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <h3>Your Clicks</h3>
+  <br>
+  <br>
+{% for item in object_list  %}
+<h4><li>Your URL: {{ item.url }}</li></h4>
+<h4><li>Time: {{ item.timestamp }}</li></h4>
+<h4><li>User: {{ item.id }}</li></h4>
+
+{% endfor %}
+</div>
+{% endblock %}
