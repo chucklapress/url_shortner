@@ -1,11 +1,17 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+
+
 
 # Create your views here
 from django.views.generic import View, ListView, CreateView, TemplateView
 from django.http import HttpResponse
 from urlbook.models import BookMark, Click
+
+
 
 
 class LoginView(View):
@@ -41,6 +47,7 @@ class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = "/"
 
+
 class NewListView(ListView):
     model = BookMark
 
@@ -51,10 +58,20 @@ class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = '/'
 
+
 class CreateBookMarkView(CreateView):
     model = BookMark
     fields = ['url','title','description','uniqueid','appuser']
     success_url = '/'
 
+
 class ClickListView(ListView):
     model = Click
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+class MyBookMarkView(LoginRequiredMixin, ListView):
+    login_url = "/login/"
+    template_name = "my_bookmarks.html"
+    model = BookMark
+    def get_queryset(self):
+        return BookMark.objects.filter(appuser=self.request.user)

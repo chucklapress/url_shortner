@@ -15,11 +15,11 @@ def hasher():
     #ints = hashids.decode('r0BL02')
     #print(ints)
 
-    hashids = Hashids(salt='user input is junk')
-    hashid = hashids.encode(random.randint(1, 100))
+    hashids = Hashids(salt='www.smokingpipes.com')
+    hashid = hashids.encode(random.randint(1, 1000))
     print(hashid)
 
-    ints = hashids.decode('b7g')
+    ints = hashids.decode('rPL')
     print(ints)
 
 
@@ -29,6 +29,5 @@ def Pyhasher():
     # Assumes the default UTF-8
     hash_object = hashlib.md5(mystring.encode())
     print(hash_object.hexdigest())
-    
 
-Pyhasher()
+hasher()
