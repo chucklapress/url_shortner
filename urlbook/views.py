@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import View, ListView, CreateView, TemplateView
 from django.http import HttpResponse
 from urlbook.models import BookMark, Click
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
 
 
 
@@ -62,6 +64,15 @@ class CreateBookMarkView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super(CreateBookMarkView, self).form_valid(form)
+
+class BookMarkUpdate(UpdateView):
+    model = BookMark
+    fields = ['url','title','description','uniqueid','appuser']
+    template_name_suffix = '_update_form'
+
+class BookMarkDelete(DeleteView):
+    model = BookMark
+    success_url = reverse_lazy('new_template_view')
 
 
 
