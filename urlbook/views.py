@@ -58,11 +58,16 @@ class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = '/'
 
-
-class CreateBookMarkView(CreateView):
+from django.contrib.auth.mixins import LoginRequiredMixin
+class CreateBookMarkView(LoginRequiredMixin, CreateView):
+    login_url = "/login/"
     model = BookMark
     fields = ['url','title','description','uniqueid','appuser']
     success_url = '/'
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super(CreateBookMarkView, self).form_valid(form)
+
 
 
 class ClickListView(ListView):
