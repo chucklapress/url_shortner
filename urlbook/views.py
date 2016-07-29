@@ -2,11 +2,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
-
-
-
-# Create your views here
 from django.views.generic import View, ListView, CreateView, TemplateView
 from django.http import HttpResponse
 from urlbook.models import BookMark, Click
