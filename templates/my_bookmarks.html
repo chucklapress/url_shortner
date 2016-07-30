@@ -9,7 +9,9 @@ hellllllo
     <li>Decription: {{ item.description }}</li>
     <li>Date you saved: {{ item.enterdate }}</li>
     <li>Hash for URL:{{ item.uniqueid }}</li>
-    <li>{{ item.id }}</li>
+    <a  href="{% url 'bookmark_update' item.id %}">Update</a>
+    <a href="{% url 'bookmark_delete' item.id %}">Delete</a>
+
 
 {% endfor %}
 </ul>

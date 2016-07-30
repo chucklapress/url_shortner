@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
-from urlbook.views import IndexView, NewListView, SignUpView, CreateBookMarkView, ClickListView, MyBookMarkView
+from urlbook.views import IndexView, NewListView, SignUpView, CreateBookMarkView, ClickListView,\
+ MyBookMarkView, BookMarkUpdateView, BookMarkDeleteView
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,6 +31,8 @@ urlpatterns = [
     url(r'^template/$', NewListView.as_view(), name="new_template_view"),
     url(r'^signup/$', SignUpView.as_view(), name="sign_up_view"),
     url(r'^bookmark/$',CreateBookMarkView.as_view(), name="create_bookmark_view"),
+    url(r'^bookmark_update/(?P<pk>\d+)$', BookMarkUpdateView.as_view(), name="bookmark_update"),
+    url(r'^bookmark_delete/(?P<pk>\d+)$', BookMarkDeleteView.as_view(), name="bookmark_delete"),
     url(r'^mybookmarks/$', MyBookMarkView.as_view(), name="my_bookmark_view"),
     url(r'^click/$', ClickListView.as_view(), name="click_list_view")
 
