@@ -37,5 +37,4 @@ urlpatterns = [
     url(r'^click/$', ClickListView.as_view(), name="click_list_view")
 
 
-
 ]
