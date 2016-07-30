@@ -68,14 +68,14 @@ class CreateBookMarkView(LoginRequiredMixin, CreateView):
 
 class BookMarkUpdateView(UpdateView):
     model = BookMark
-    success_url = 'my_bookmark_view'
+    success_url = '/mybookmarks/'
     fields = ['url','title','description','uniqueid','appuser']
     template_name_suffix = '_update_form'
 
 
 class BookMarkDeleteView(DeleteView):
     model = BookMark
-    success_url = 'my_bookmark_view'
+    success_url = '/mybookmarks/'
     template_name = "delete_bookmark.html"
     fields = ['url', 'title','description','uniqueid','appuser']
 
