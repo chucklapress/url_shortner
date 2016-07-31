@@ -1,5 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+
+
+
 
 # Create your models here.
 
@@ -16,3 +21,6 @@ class BookMark(models.Model):
 class Click(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     url = models.ForeignKey(BookMark)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
