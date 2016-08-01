@@ -7,21 +7,26 @@
     <title>Welcome to url shortner</title>
     <link rel = "stylesheet" href ={% static "app/css/bootstrap.css"%}>
     <body>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <br>
+          {% if user.is_authenticated %}
+          <a href="{%url 'bookmark_template_view'%}?next=/">List of Book marks</a>
+          <a href="{%url 'create_bookmark_view'%}?next=/">Save a Bookmark</a>
+          <a href="{%url 'click_list_view'%}?next=/">Your Clicks</a>
+          <a href="{%url 'my_bookmark_view'%}?next=/">Your Bookmarks</a>
+          <a href="{%url 'logout_view'%}?next=/">Logout</a>
+          {% else %}
+          <a href="{% url 'index_view'%}">Home</a>
+          <a href= "{% url 'sign_up_view' %}">Register an account</a>
+          <a href="{%url 'login'%}">Login to your account</a>
+          <a href="{%url 'bookmark_template_view'%}?next=/">Book marks</a>
+          {% endif %}
 
-<div class="container">
-{% if user.is_authenticated %}
-<a href="{%url 'bookmark_template_view'%}?next=/">List of Book marks</a>
-<a href="{%url 'create_bookmark_view'%}?next=/">Save a Bookmark</a>
-<a href="{%url 'click_list_view'%}?next=/">Your Clicks</a>
-<a href="{%url 'my_bookmark_view'%}?next=/">Your Bookmarks</a>
-<a href="{%url 'logout_view'%}?next=/">Logout</a>
-{% else %}
-<a href="{% url 'index_view'%}">Home</a>
-<a href= "{% url 'sign_up_view' %}">Register a new account</a>
-<a href="{%url 'login'%}">Login to your account</a>
-<a href="{%url 'bookmark_template_view'%}?next=/">Starting Point</a>
-{% endif %}
-</div>
+        </div>
+      </nav>
+
+
 
   {% block content %}
 
