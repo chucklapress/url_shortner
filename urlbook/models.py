@@ -21,6 +21,4 @@ class BookMark(models.Model):
 class Click(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     url = models.ForeignKey(BookMark)
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    click_counts = models.IntegerField()

@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View, ListView, CreateView, TemplateView, UpdateView, DeleteView
+from django.views.generic import View, ListView, CreateView, TemplateView, UpdateView, DeleteView, DetailView
 from django.http import HttpResponse
 from urlbook.models import BookMark, Click
 from django.core.urlresolvers import reverse_lazy
@@ -44,9 +44,8 @@ class SignUpView(CreateView):
     success_url = "/"
 
 
-class NewListView(ListView):
+class BookMarkListView(ListView):
     model = BookMark
-
 
 
 class SignUpView(CreateView):
@@ -64,6 +63,9 @@ class CreateBookMarkView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super(CreateBookMarkView, self).form_valid(form)
+
+class BookMarkDetailView(DetailView):
+    model = BookMark
 
 
 class BookMarkUpdateView(UpdateView):
