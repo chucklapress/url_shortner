@@ -15,6 +15,8 @@ class BookMark(models.Model):
     enterdate = models.DateTimeField(auto_now_add=True)
     uniqueid = models.CharField(max_length=20)
     appuser = models.ForeignKey(User)
+
+
     def __str__(self):
         return self.url
 

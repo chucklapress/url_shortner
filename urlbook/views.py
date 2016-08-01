@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse_lazy
 
 
 
+
 class LoginView(View):
     def post(self, request):
         username = request.POST['username']
