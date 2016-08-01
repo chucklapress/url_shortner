@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class="container">
+<br>
+<br>
 <h4>Your saved bookmarks</h4>
 <ul>
 {% for item in object_list %}
@@ -9,10 +13,11 @@
     <li>Decription: {{ item.description }}</li>
     <li>Date you saved: {{ item.enterdate }}</li>
     <li>Hash for URL:{{ item.uniqueid }}</li>
+    <br>
     <a href="{% url 'bookmark_update' item.id %}">Update</a>
     <a href="{% url 'bookmark_delete' item.id %}">Delete</a>
 {% endfor %}
 </ul>
-
+</div>
 
 {% endblock %}

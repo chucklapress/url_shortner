@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Book Marks</h1>
+<div class="container">
+
+<h3>Book Marks</h3>
 <ul>
 {% for item in object_list %}
-    <li>Your URL: {{ item.url }}</li>
+  <br>
+    <li> URL address: {{ item.url }}</li>
     <li>Web page: {{ item.title }}</li>
     <li>Decription: {{ item.description }}</li>
-    <li>Date you saved: {{ item.enterdate }}</li>
-    <li>Hash for URL:{{ item.uniqueid }}</li>
+    <li>Date saved: {{ item.enterdate }}</li>
+    <li>Hash id URL:{{ item.uniqueid }}</li>
     <li>{{ item.id }}</li>
     <a href="{%url 'bookmark_detail_view' item.id %}">Book mark details</a
-
 {% endfor %}
 </ul>
+</div>
 {% endblock %}
