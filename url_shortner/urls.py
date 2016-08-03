@@ -19,7 +19,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
 from urlbook.views import IndexView, BookMarkListView, SignUpView, CreateBookMarkView, ClickListView,\
- MyBookMarkView, BookMarkUpdateView, BookMarkDeleteView, BookMarkDetailView
+ MyBookMarkView, BookMarkUpdateView, BookMarkDeleteView, BookMarkDetailView, MyBookMarkRedirectView
 
 
 urlpatterns = [
@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^bookmark_update/(?P<pk>\d+)$', BookMarkUpdateView.as_view(), name="bookmark_update"),
     url(r'^bookmark_delete/(?P<pk>\d+)$', BookMarkDeleteView.as_view(), name="bookmark_delete"),
     url(r'^mybookmarks/$', MyBookMarkView.as_view(), name="my_bookmark_view"),
+    url(r'^template/(?P<bookmark_id>\d+)/$', MyBookMarkRedirectView.as_view(),name='my_bookmark_redirect_view'),
     url(r'^click/$', ClickListView.as_view(), name="click_list_view")
 
 

@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View, ListView, CreateView, TemplateView, UpdateView, DeleteView, DetailView
+from django.views.generic import View, ListView, CreateView, TemplateView, UpdateView, DeleteView, DetailView, RedirectView
 from django.http import HttpResponse
 from urlbook.models import BookMark, Click
 from django.core.urlresolvers import reverse_lazy
@@ -69,6 +69,7 @@ class BookMarkDetailView(DetailView):
     model = BookMark
 
 
+
 class BookMarkUpdateView(UpdateView):
     model = BookMark
     success_url = '/mybookmarks/'
@@ -96,3 +97,11 @@ class MyBookMarkView(LoginRequiredMixin, ListView):
         return BookMark.objects.filter(appuser=self.request.user)
     class Meta:
         ordering = ['-created']
+
+class MyBookMarkRedirectView(RedirectView):
+    def get(self, request, *args,**kwargs):
+        bookmark_id = self.kwargs.get('bookmark_id',None)
+        bookmark = BookMark.objects.get(pk=bookmark_id)
+        self.url = '/template/%s' %(bookmark_id)
+        return super(MyBookMarkRedirectView, self).get(request,*args,**kwargs)
+    
