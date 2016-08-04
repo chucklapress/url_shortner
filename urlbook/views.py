@@ -100,8 +100,7 @@ class MyBookMarkView(LoginRequiredMixin, ListView):
 
 class MyBookMarkRedirectView(RedirectView):
     def get(self, request, *args,**kwargs):
-        bookmark_id = self.kwargs.get('bookmark_id',None)
-        bookmark = BookMark.objects.get(pk=bookmark_id)
-        self.url = '/template/%s' %(bookmark_id)
+        uniqueid = self.kwargs.get('uniqueid',None)
+        url = BookMark.objects.get('url')
+        self.url = '/template/%s' %(url)
         return super(MyBookMarkRedirectView, self).get(request,*args,**kwargs)
-    
