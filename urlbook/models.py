@@ -13,7 +13,7 @@ class BookMark(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=80)
     enterdate = models.DateTimeField(auto_now_add=True)
-    uniqueid = models.CharField(max_length=20)
+    hashid = models.CharField(max_length=20)
     appuser = models.ForeignKey(User)
 
 
@@ -24,3 +24,8 @@ class Click(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     url = models.ForeignKey(BookMark)
     click_counts = models.IntegerField()
+    class Meta:
+        ordering = ['-timestamp']
+
+    def __str__(self):
+        return str(self.url)

@@ -19,7 +19,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login, logout
 from urlbook.views import IndexView, BookMarkListView, SignUpView, CreateBookMarkView, ClickListView,\
- MyBookMarkView, BookMarkUpdateView, BookMarkDeleteView, BookMarkDetailView, MyBookMarkRedirectView
+ MyBookMarkView, BookMarkUpdateView, BookMarkDeleteView, BookMarkDetailView, DisplayClickRedirectView
 
 
 urlpatterns = [
@@ -31,11 +31,12 @@ urlpatterns = [
     url(r'^logout/$', logout, name="logout_view"),
     url(r'^template/$', BookMarkListView.as_view(), name="bookmark_template_view"),
     url(r'^template/(?P<pk>\d+)/$', BookMarkDetailView.as_view(), name='bookmark_detail_view'),
-    url(r'^template/(?P<url>\d+)/$', MyBookMarkRedirectView.as_view(),name='my_bookmark_redirect_view'),
     url(r'^bookmark/$',CreateBookMarkView.as_view(), name="create_bookmark_view"),
     url(r'^bookmark_update/(?P<pk>\d+)$', BookMarkUpdateView.as_view(), name="bookmark_update"),
     url(r'^bookmark_delete/(?P<pk>\d+)$', BookMarkDeleteView.as_view(), name="bookmark_delete"),
     url(r'^mybookmarks/$', MyBookMarkView.as_view(), name="my_bookmark_view"),
-    url(r'^click/$', ClickListView.as_view(), name="click_list_view")
+    url(r'^click/$', ClickListView.as_view(), name="click_list_view"),
+    url(r'^(?P<hashid>\w+)/$',  DisplayClickRedirectView.as_view(), name="redirect")
+
 
     ]

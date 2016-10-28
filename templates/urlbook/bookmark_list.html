@@ -11,10 +11,19 @@
     <li>Web page: {{ item.title }}</li>
     <li>Decription: {{ item.description }}</li>
     <li>Date saved: {{ item.enterdate }}</li>
-    <li>Hash id URL:{{ item.uniqueid }}</li>
+    <li>Hash id URL:{{ item.hashid }}</li>
     <li>{{ item.id }}</li>
+    
     <a href="{%url 'bookmark_detail_view' item.id %}">Book mark details</a
 {% endfor %}
 </ul>
 </div>
 {% endblock %}
+{% for bookmark in bookmarks %}
+          <tr>
+            <td><h4>{{ bookmark.title }}</h4></td>
+            <li><a href="{% url 'redirect' url.hashid %}" target="_blank">hashed/{{ url.hashid }}</a></li>
+            <td>{{ bookmark.click_count }}</td>
+            <td>{{ bookmark.user }}</td>
+          </tr>
+        {% endfor %}
